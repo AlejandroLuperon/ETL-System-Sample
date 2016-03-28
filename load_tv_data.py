@@ -29,8 +29,8 @@ local_port = '3306'
 local_mysql_connection = mysql.connector.connect(host=local_host,user=local_username,database=local_database,password=local_password,port=local_port)
 local_mysql_cursor = local_mysql_connection.cursor(buffered=True)
 
-es_max_id = 1974140
-SELECT episode.id, series.title, episode.title, episode.production_year,episode.season_nr,episode.episode_nr FROM title AS episode INNER JOIN title AS series ON series.id = episode.episode_of_id WHERE episode.kind_id IN(2,7) AND episode.id > 0
+es_max_id = 0
+
 while es_max_id < 3693956:
 
 	sql = "SELECT episode.id, series.title, episode.title, episode.production_year,episode.season_nr,episode.episode_nr FROM title AS episode INNER JOIN title AS series ON series.id = episode.episode_of_id WHERE episode.kind_id IN(2,7) AND episode.id > " + str(es_max_id) + " LIMIT 10000"
